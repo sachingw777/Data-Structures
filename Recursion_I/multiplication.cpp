@@ -7,3 +7,4 @@ int multiplyNumbers(int m, int n) {
   return m +smallAns;
 
 }
+
