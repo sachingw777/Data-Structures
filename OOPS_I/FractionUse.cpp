@@ -8,6 +8,7 @@ int main(){
     Fraction f2(12,9);
 
     f1.print();
-    f1.add(f2);
+    // f1.add(f2);
+    f1.multiply(f2);
     f1.print();
 }

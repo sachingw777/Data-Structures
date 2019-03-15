@@ -32,4 +32,10 @@ class Fraction{
             simplify();
         }
 
+        void multiply(Fraction const & f2){
+            numerator = numerator * f2.numerator;
+            denominator = denominator * f2.denominator;
+            simplify();
+        }
+
 };

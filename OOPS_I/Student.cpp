@@ -1,5 +1,4 @@
 class Student {
-
 	public :
 
 	int rollNumber;
@@ -10,12 +9,11 @@ class Student {
 
 
 	public :
-
-
+	
 	// Default constructor
-	/*Student() {
-		cout << "Constreuctor called ! "<< endl;
-	}*/
+	Student() {
+		cout << "Constructor called ! "<< endl;
+	}
 
 	// Parameterized constructor
 	Student(int rollNumber) {
@@ -24,7 +22,7 @@ class Student {
 		this -> rollNumber = rollNumber;
 	}
 
-	Student(int a, int r) {
+	Student(int age, int rollNumber) {
 		cout << "this : " << this << endl;
 		cout << "Constructor 3 called ! " << endl;
 		this -> age = age;
@@ -50,4 +48,3 @@ class Student {
 	}
 
 };
-
