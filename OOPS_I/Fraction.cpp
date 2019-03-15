@@ -37,5 +37,4 @@ class Fraction{
             denominator = denominator * f2.denominator;
             simplify();
         }
-
 };
