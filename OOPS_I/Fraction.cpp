@@ -26,7 +26,7 @@ class Fraction{
             this->denominator /= gcd;
         }
 
-        void add(Fraction f2){
+        void add(Fraction const & f2){
             denominator = this->denominator * f2.denominator;
             numerator = (this->numerator * f2.denominator) + (f2.numerator * this->denominator);
             simplify();

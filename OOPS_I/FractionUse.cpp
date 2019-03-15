@@ -5,7 +5,7 @@ using namespace std;
 int main(){
     
     Fraction f1(11,2);
-    Fraction f2(12,4);
+    Fraction f2(12,9);
 
     f1.print();
     f1.add(f2);
