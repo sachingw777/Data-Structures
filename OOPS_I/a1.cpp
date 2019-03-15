@@ -1,3 +1,6 @@
+//check fror constructor doubt
+//gives compilation error
+
 #include <iostream>
 using namespace std;
 
