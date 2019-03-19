@@ -53,7 +53,24 @@ class Fraction{
         bool operator==(Fraction const &f2){
             return (this->numerator == f2.numerator && this->denominator == f2.denominator); 
         }
+        
+        //Pre-Increment Operator
+        Fraction& operator++(){
+            numerator = numerator + denominator;
+            simplify();
 
+            return *this;
+        }
+
+        //Post-Increment Operator
+        Fraction operator++(int){
+            Fraction fNew(numerator, denominator);
+            numerator = numerator + denominator;
+            simplify();
+            fNew.simplify();
+            return fNew;
+
+        }
         void multiply(Fraction const & f2){
             numerator = numerator * f2.numerator;
             denominator = denominator * f2.denominator;
