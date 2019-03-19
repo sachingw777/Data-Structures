@@ -53,7 +53,7 @@ class Fraction{
         bool operator==(Fraction const &f2){
             return (this->numerator == f2.numerator && this->denominator == f2.denominator); 
         }
-        
+
         //Pre-Increment Operator
         Fraction& operator++(){
             numerator = numerator + denominator;
@@ -71,6 +71,14 @@ class Fraction{
             return fNew;
 
         }
+        
+        Fraction operator+=(Fraction const &f2){
+            int den = this->denominator * f2.denominator;
+            int num = (this->numerator * f2.denominator) + (f2.numerator * this->denominator);
+            Fraction fNew(num, den);
+            fNew.simplify();
+            return fNew;
+}
         void multiply(Fraction const & f2){
             numerator = numerator * f2.numerator;
             denominator = denominator * f2.denominator;

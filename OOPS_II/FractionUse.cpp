@@ -8,8 +8,15 @@ int main(){
     Fraction f2(12,9);
     f1.add(f2);
     f1.print();
-    // f1.multiply(f2);
+    f2.print();
     // f1.print();
+    // Fraction f4 = ++(++f1);
+    // f1.print();
+    // f4.print();
+
+
+    // f1.multiply(f2);
+  
     
     Fraction f3 = f1.add(f2);
     Fraction f4 = f1 * f2;
