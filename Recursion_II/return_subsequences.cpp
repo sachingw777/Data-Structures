@@ -3,7 +3,7 @@ using namespace std;
 
 int subs(string input, string output[]){
     if(input.empty()){
-        output[0] = " ";
+        output[0] = "";
         return 1;
     }
 
@@ -22,6 +22,7 @@ int main(){
     string *output = new string[1000];
     int count = subs(input, output);
     for(int i = 0; i < count; i++){
-        cout << output[i];
+        cout << output[i]<<endl;
     }
+
 }

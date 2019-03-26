@@ -1,21 +1,38 @@
-#include <string>
 #include <iostream>
+#include <string>
 using namespace std;
 
-void keypad(string input, string output){
-    if(input.empty()){
+void printkeypad(int num, string output){
+    if(num == 0){
         cout << output << endl;
         return;
     }
-
-
+    
+    string keyarr[10] = {
+        "",
+        "",
+        "abc",
+        "def",
+        "ghi",
+        "jkl",
+        "mno",
+        "pqrs",
+        "tuv",
+        "wxyz",
+    };
+    
+    int last = num%10;
+    int smallNum = num / 10;
+    
+    for(int i = 0; i < keyarr[last].size(); i++){
+        printkeypad(smallNum, keyarr[last].substr(i,1) + output);
+    }
+    
 }
 
 int main(){
-    string input;
+    int input;
     cin >> input;
     string output = "";
-    keypad(input, output);
-}void printKeypad(int num){
-    string output = "";
-    printkeypad(num, output);
+    printkeypad(input, output);
+}

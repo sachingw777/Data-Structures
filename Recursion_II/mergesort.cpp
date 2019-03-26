@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
-
 void merge(int a[], int start, int end){
     int mid = (start + end)/2;
     int size = (end - start) + 1;
