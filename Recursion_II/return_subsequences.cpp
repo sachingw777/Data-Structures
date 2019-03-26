@@ -9,9 +9,9 @@ int subs(string input, string output[]){
 
     string smallString = input.substr(1);
     int smallSize = subs(smallString, output);
-    // for(int i = 0; i < smallSize; i++){
-    //     input[i + smallSize] = input[0] + output[i];
-    // }
+    for(int i = 0; i < smallSize; i++){
+        output[i + smallSize] = input[0] + output[i];
+    }
 
     return 2 * smallSize;
 }
