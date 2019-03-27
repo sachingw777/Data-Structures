@@ -23,7 +23,7 @@ class DynamicArray{
 
     void operator=(DynamicArray const & d){
         this-> data = new int[d.capacity];
-        for(int i = 0; i < nextIndex; i++){
+        for(int i = 0; i < d.nextIndex; i++){
             this->data[i] = d.data[i];
         }
         this -> nextIndex = d.nextIndex;
@@ -73,6 +73,4 @@ class DynamicArray{
         }
         cout << endl;
     }
-
-
 };
