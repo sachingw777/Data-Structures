@@ -14,7 +14,7 @@ class DynamicArray{
     DynamicArray(DynamicArray const & d){
         // this -> data = d.data;      //shallow copy
         this-> data = new int[d.capacity];
-        for(int i = 0; i < nextIndex; i++){
+        for(int i = 0; i < d.nextIndex; i++){
             this->data[i] = d.data[i];
         }
         this -> nextIndex = d.nextIndex;

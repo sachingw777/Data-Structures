@@ -14,3 +14,8 @@ d1.print();
 }
     d1.get(3);
 
+
+
+    DynamicArray d2(d1);
+    // d2 = d1;
+    d2.print(); 
