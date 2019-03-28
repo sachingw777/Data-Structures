@@ -12,15 +12,8 @@ void print(Node *head){
 }
 
 int main(){
-    // Node n1(10);
-    // Node * head = &n1;
-
-    // Node n2(20);
-    // n1.next = &n2;
-
-    // Node n3(30);
-    // n2.next = &n3;
-    // n3.next = NULL;
+/*    Node n1(10);
+    Node * head = &n1;
 
     // print(head);
 
