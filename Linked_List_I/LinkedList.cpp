@@ -44,6 +44,16 @@ Node *takeInput(){
     return head;
 }
 
+int length(Node *head) {
+    Node * temp = head;
+    int count = 0;
+    while(temp->next != NULL){
+        temp = temp->next;
+        count++;
+    }
+    return count ;
+}
+
 void print(Node *head){
     Node * temp = head;
     while(temp != NULL){
@@ -51,6 +61,103 @@ void print(Node *head){
         temp = temp->next;
     }
       
+void printIthNode(Node *head, int i) {
+    if(i > length(head)){
+        return;
+    }
+    Node * temp = head;
+    int count = 0;
+    while(temp != NULL){
+        if(count == i){
+            cout << temp->data;
+        }
+        temp = temp->next;
+        count++;
+}
+
+void insertNode(Node *head, int i, int data){
+    Node *newNode = new Node(data);
+    Node *temp = head;
+    int count = 0;
+
+    if(i == 0){
+        newNode->next = head;
+        head = newNode;
+    }
+
+    while(temp != NULL && count < i - 1){
+        temp = temp -> next;
+        count++;
+    }
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
+Node* insertNodeRec(Node *head, int i, int data) {
+    if(head == NULL){
+        if(i == 0){
+            Node *newNode = new Node(data);
+            return newNode;
+        }
+        else{
+            return head;
+        }
+    }
+    
+    Node *newNode = new Node(data);
+    
+    if(i == 0){
+        newNode->next = head;
+        head = newNode;
+        return head;
+    }
+    
+    head->next = insertNodeRec(head->next, i - 1, data);
+    return head;
+}
+
+Node* deleteNode(Node *head, int i) {
+    Node *temp = head;
+    if(i == 0){
+        temp = temp->next;
+        return temp;
+        delete head;
+    }
+    
+    int count = 0; 
+    Node *previousNode = NULL;
+    while(temp != NULL && count <= i - 1){
+        if(count == i - 1){
+            previousNode = temp;
+        }
+
+        // if (temp == NULL || temp->next == NULL){
+        //  return head; 
+        // }
+        
+        temp = temp->next;
+        count++;
+    }
+  if(temp != NULL){
+previousNode->next = temp->next;
+    delete temp;
+  }  
+    return head;
+}
+
+Node* deleteNodeRec(Node *head, int i) {
+    if(head == NULL){
+        return head;
+    }
+    
+    Node *temp = head;
+    if(i == 0){
+        head = head->next;
+        delete temp;
+        return head;
+    }
+    head->next = deleteNodeRec(head->next, i - 1);
+    return head;
 }
 
 int main(){
