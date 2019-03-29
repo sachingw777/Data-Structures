@@ -64,6 +64,16 @@ int length1(Node *head) {
 }
 
 
+//Recursive Length
+int length1(Node *head) {
+    if(head == NULL){
+        return 0;
+    }
+    
+    return 1 + length(head->next);
+}
+
+
 void print(Node *head){
     Node * temp = head;
     while(temp != NULL){
