@@ -47,12 +47,22 @@ Node *takeInput(){
 int length(Node *head) {
     Node * temp = head;
     int count = 0;
-    while(temp->next != NULL){
+    while(temp != NULL){
         temp = temp->next;
         count++;
     }
     return count ;
 }
+
+//Recursive Length
+int length1(Node *head) {
+    if(head == NULL){
+        return 0;
+    }
+    
+    return 1 + length(head->next);
+}
+
 
 void print(Node *head){
     Node * temp = head;
@@ -60,7 +70,8 @@ void print(Node *head){
         cout << temp->data << " ";
         temp = temp->next;
     }
-      
+}
+
 void printIthNode(Node *head, int i) {
     if(i > length(head)){
         return;
@@ -73,9 +84,10 @@ void printIthNode(Node *head, int i) {
         }
         temp = temp->next;
         count++;
+    }
 }
 
-void insertNode(Node *head, int i, int data){
+Node* insertNode(Node *head, int i, int data){
     Node *newNode = new Node(data);
     Node *temp = head;
     int count = 0;
@@ -83,14 +95,18 @@ void insertNode(Node *head, int i, int data){
     if(i == 0){
         newNode->next = head;
         head = newNode;
+        return head;
     }
 
     while(temp != NULL && count < i - 1){
         temp = temp -> next;
         count++;
     }
-    newNode->next = temp->next;
-    temp->next = newNode;
+    if(temp != NULL){
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
+    return head;
 }
 
 Node* insertNodeRec(Node *head, int i, int data) {
@@ -160,6 +176,22 @@ Node* deleteNodeRec(Node *head, int i) {
     return head;
 }
 
+void append_LinkedList1(Node* head,int n){
+    Node * temp = head;
+    Node * h2 = NULL, *secondIndex = NULL;
+    int count = 0, length_LL = length(head);
+    
+    while(temp->next != NULL){
+        // if(count == length_LL - n - 1){
+        //     cout << temp->data << endl;
+        // }
+        temp = temp->next;
+        count++;
+    }
+    cout << temp->data;
+    // return head;
+}
+
 Node* append_LinkedList(Node* head,int n){
     Node * temp = head;
     Node * h2 = NULL, *secondIndex = NULL;
@@ -167,22 +199,48 @@ Node* append_LinkedList(Node* head,int n){
     
     while(temp->next != NULL){
         if(count == length_LL - n - 1){
-            cout << temp->data;
+            secondIndex = temp;
+            h2 = temp->next;
         }
+        temp = temp->next;
+        count++;
     }
+    secondIndex->next = NULL;
+    temp->next = head;
+    head = h2;  
+
     return head;
 }
 
-int main(){
-/*    Node n1(10);
-    Node * head = &n1;
 
+int main(){
+
+    Node *head = takeInput_Better();
+    head = append_LinkedList(head, 2);
+    print(head);
+    
+    // cout << length(head) <<endl;
+
+    // head = deleteNode(head, 50);
     // print(head);
 
+    /*    Node n1(10);
+    Node * head = &n1;
 
+    Node n2(20);
+    n1.next = &n2;
+
+    Node n3(30);
+    n2.next = &n3;
+    n3.next = NULL;
+
+    print(head);
+*/
+    /*
     Node *n10 = new Node(20);
     Node *head = n10;
     Node *n4 = new Node(30);
 	n10 -> next = n4;
     print(head);
+    */
 }
