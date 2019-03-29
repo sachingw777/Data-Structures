@@ -160,6 +160,19 @@ Node* deleteNodeRec(Node *head, int i) {
     return head;
 }
 
+Node* append_LinkedList(Node* head,int n){
+    Node * temp = head;
+    Node * h2 = NULL, *secondIndex = NULL;
+    int count = 0, length_LL = length(head);
+    
+    while(temp->next != NULL){
+        if(count == length_LL - n - 1){
+            cout << temp->data;
+        }
+    }
+    return head;
+}
+
 int main(){
 /*    Node n1(10);
     Node * head = &n1;
