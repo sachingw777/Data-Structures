@@ -59,20 +59,8 @@ int length1(Node *head) {
     if(head == NULL){
         return 0;
     }
-    
     return 1 + length(head->next);
 }
-
-
-//Recursive Length
-int length1(Node *head) {
-    if(head == NULL){
-        return 0;
-    }
-    
-    return 1 + length(head->next);
-}
-
 
 void print(Node *head){
     Node * temp = head;
@@ -184,22 +172,6 @@ Node* deleteNodeRec(Node *head, int i) {
     }
     head->next = deleteNodeRec(head->next, i - 1);
     return head;
-}
-
-void append_LinkedList1(Node* head,int n){
-    Node * temp = head;
-    Node * h2 = NULL, *secondIndex = NULL;
-    int count = 0, length_LL = length(head);
-    
-    while(temp->next != NULL){
-        // if(count == length_LL - n - 1){
-        //     cout << temp->data << endl;
-        // }
-        temp = temp->next;
-        count++;
-    }
-    cout << temp->data;
-    // return head;
 }
 
 Node* append_LinkedList(Node* head,int n){
