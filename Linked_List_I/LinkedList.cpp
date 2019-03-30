@@ -194,6 +194,33 @@ Node* append_LinkedList(Node* head,int n){
     return head;
 }
 
+Node* eliminate_duplicate(Node* head)
+{
+    Node *temp = head, *t1 = head, *t2 = head->next;
+    while(temp != NULL && temp->next != NULL){
+        if(t1->data == t2->data){
+            Node *deleteNode = t2;
+            t2 = t2->next;
+            delete deleteNode;
+        }else if(t1->next != t2->next){
+            t1->next = t2;
+            t2 = t2->next;
+            t1 = t1->next;
+        }
+        temp = temp ->next;
+    }
+    t1->next = NULL;
+    return head;
+}
+
+void print_linkedlist_spl(Node*head)
+{
+    if(head == NULL){
+        return;
+    }
+    print_linkedlist_spl(head->next);
+    cout << head->data << " ";
+}
 
 int main(){
 
