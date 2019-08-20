@@ -17,6 +17,22 @@ void helper(char input[], int index){
 }
 
 void pairStar(char input[]) {
-    // Write your code here
-    helper(input, 0);
+   
+    helper(input, 0);   //Method 1
+
+    int length = strlen(input); //Method 1.1
+    if(length <= 1){
+        return;
+    }
+    
+    if(input[0] == input[1]){
+        input[length + 1] = '\0';
+        int i = length - 1;
+        for(i; i >= 1; i--){
+            input[i + 1] = input[i];
+        }
+        input[i + 1] = '*';
+    }
+    
+    pairStar(input + 1);
 }
