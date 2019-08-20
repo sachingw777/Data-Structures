@@ -24,4 +24,23 @@ void qwerty(char S[], int start){
 
 void replacePi(char input[]) {
     qwerty(input,0);
+
+    //Method 2
+       int length = strlen(input);
+
+    if(length <= 1){
+        return;
+    }
+    
+    if(input[0] == 'p' && input[1] == 'i'){
+        input[length + 2] = '\0';
+        for(int i = length - 1; i > 1; i--){
+            input[i + 2] = input[i];
+        }
+        input[0] = '3';
+        input[1] = '.';
+        input[2] = '1';
+        input[3] = '4';
+    }   
+     replacePi(input + 1);
 }
