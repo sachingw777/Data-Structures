@@ -2,14 +2,14 @@
 #include<bits/stdc++.h> 
 
 //Method 1
-int qwerty(char input[], int index){
+int qwerty(char input[], int length){
 
-    if(index == 0){
-        return input[index] - '0';
+    if(length == 0){
+        return input[length] - '0';
     }
     
-    int small = input[index] - '0';
-    return (qwerty(input, index - 1) * 10) + small;
+    int small = input[length] - '0';
+    return (qwerty(input, length - 1) * 10) + small;
 }
 
 int stringToNumber(char input[]) {
