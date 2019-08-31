@@ -19,9 +19,7 @@ int keypad(int num, string output[]){
         "tuv",
         "wxyz",
     };
-    
-
-    
+ 
     int smallNumber = num / 10;
     int last = num % 10;
     string smallOutput[1000];
@@ -37,4 +35,46 @@ int keypad(int num, string output[]){
         j++;
     }
     return k;
+}
+
+//Method 2
+
+int keypad(int num, string output[]){
+    if(num == 0){
+        output[0] = "";
+        return 1;
+    }
+
+    string keyarr[10] = {
+        "",
+        "",
+        "abc",
+        "def",
+        "ghi",
+        "jkl",
+        "mno",
+        "pqrs",
+        "tuv",
+        "wxyz",
+    };
+
+    int smallNum = num / 10;
+    int lastDigit = num % 10;
+    int smallOutputSize = keypad(smallNum, output);
+    string options = keyarr[lastDigit];
+
+    for(int i = 0; i < options.length() - 1; i++){  //copy down the elements from RC
+        for(int j = 0; j < smallOutputSize; j++){
+            output[j + (i + 1) * smallOutputSize] = output[j];
+        }
+    }
+
+    int k = 0;
+    for(int i = 0; i < options.length() - 1; i++){
+        for(int j = 0; j < smallOutputSize; j++){
+            output[k] = output[k] + options.substr(i,1);
+            k++;
+        }
+    }
+    return smallOutputSize + options.length();
 }
