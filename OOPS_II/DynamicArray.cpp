@@ -39,6 +39,7 @@ class DynamicArray{
             }
         delete [] data;
         data = newdata;
+        capacity *= 2;
         }
 
         data[nextIndex] = num;
