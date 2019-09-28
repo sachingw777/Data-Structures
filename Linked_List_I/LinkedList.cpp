@@ -68,6 +68,7 @@ void print(Node *head){
         cout << temp->data << " ";
         temp = temp->next;
     }
+    cout << endl;
 }
 
 void printIthNode(Node *head, int i) {
@@ -145,18 +146,14 @@ Node* deleteNode(Node *head, int i) {
             previousNode = temp;
         }
 
-        // if (temp == NULL || temp->next == NULL){
-        //  return head; 
-        // }
-        
         temp = temp->next;
         count++;
     }
-  if(temp != NULL){
-previousNode->next = temp->next;
-    delete temp;
-  }  
-    return head;
+    if(temp != NULL){
+        previousNode->next = temp->next;
+        delete temp;
+    }  
+        return head;
 }
 
 Node* deleteNodeRec(Node *head, int i) {
@@ -172,6 +169,19 @@ Node* deleteNodeRec(Node *head, int i) {
     }
     head->next = deleteNodeRec(head->next, i - 1);
     return head;
+}
+
+int indexOfNIter(Node *head, int n) {
+    Node *temp = head;
+    int count = 0;
+    while(temp != NULL){
+        if(temp -> data == n){
+            return count;
+        }
+        temp = temp -> next;
+        count++;
+    }
+    return -1;
 }
 
 Node* append_LinkedList(Node* head,int n){
@@ -225,26 +235,30 @@ void print_linkedlist_spl(Node*head)
 int main(){
 
     Node *head = takeInput_Better();
-    head = append_LinkedList(head, 2);
-    print(head);
+    // head = insertNode(head, 3, 99);
+    // print(head);
+    // deleteNode(head,3);
+    // print(head);
+    // head = append_LinkedList(head, 2);
+    // print(head);
     
     // cout << length(head) <<endl;
 
     // head = deleteNode(head, 50);
     // print(head);
 
-    /*    Node n1(10);
-    Node * head = &n1;
+    // Node n1(10);
+    // Node * head = &n1;
 
-    Node n2(20);
-    n1.next = &n2;
+    // Node n2(20);
+    // n1.next = &n2;
 
-    Node n3(30);
-    n2.next = &n3;
-    n3.next = NULL;
+    // Node n3(30);
+    // n2.next = &n3;
+    // n3.next = NULL;
 
-    print(head);
-*/
+    // print(head);
+
     /*
     Node *n10 = new Node(20);
     Node *head = n10;
