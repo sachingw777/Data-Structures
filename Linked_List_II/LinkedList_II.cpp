@@ -76,12 +76,17 @@ Node* mergeSort(Node *head) {
     return mergeTwoLLs(first, second);
 }
 
-    if(head1 != NULL){
-        finalTail -> next= head1;
-    }
-    if(head2 != NULL){
-        finalTail -> next= head2;
-    }
+Node *rev_linkedlist_itr(Node* head)
+{
+    Node *previous = NULL, *current = head, *nextIndex = NULL;
 
-    return finalHead;
+    while(current != NULL){
+        nextIndex = current -> next;    //save next
+        current -> next = previous;     //join previous
+        previous = current;             //move pointers
+        current = nextIndex;
+        nextIndex = nextIndex -> next;
+    }
+    
+    return previous;
 }
