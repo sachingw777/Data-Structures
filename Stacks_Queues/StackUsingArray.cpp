@@ -22,7 +22,7 @@ class StackUsingArray{
 
         int top(){
             if(isEmpty()){
-                cout << "Stack Empty"
+                cout << "Stack Empty";
                 return INT_MIN;
             }
 
@@ -31,7 +31,10 @@ class StackUsingArray{
 
         void push(int element){
             if(nextIndex == capacity){
-                cout << "Stack is Full";
+                // cout << "Stack is Full";
+                int *newData = new int[capacity * 2];
+                delete [] data;
+                data = newData;
             }
             data[nextIndex] = element;
             nextIndex++;
@@ -39,10 +42,10 @@ class StackUsingArray{
 
         int pop(){
             if(isEmpty()){
-                cout << "Stack Empty"
+                cout << "Stack Empty";
                 return INT_MIN;
             }
             nextIndex--;
             return data[nextIndex];
         }
-}
+};
