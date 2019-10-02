@@ -30,7 +30,7 @@ Node *reverse_linked_list_rec(Node *head)
 
 Node* mergeTwoLLs(Node *head1, Node *head2) {
     Node *finalHead = NULL, *finalTail = NULL;
-    if(head2 -> data <= head2 -> data){
+    if(head1 -> data <= head2 -> data){
         finalHead = head1;
         finalTail = head1;
         head1 = head1 -> next;
@@ -40,14 +40,16 @@ Node* mergeTwoLLs(Node *head1, Node *head2) {
         head2 = head2 -> next;
     }
 
-    while(head1 != NULL || head2 != NULL){
-        if(head1 < head2){
+    while(head1 != NULL && head2 != NULL){
+        if(head1 -> data <= head2 -> data){
             finalTail -> next = head1;
             head1 = head1 -> next;
-        }else
+            finalTail = finalTail -> next;
+        }else if(head1 -> data > head2 -> data)
         {
             finalTail -> next = head2;
             head2 = head2 -> next;
+            finalTail = finalTail -> next;
         }
     }
 
@@ -89,4 +91,27 @@ Node *rev_linkedlist_itr(Node* head)
     }
     
     return previous;
+}
+
+int indexOfNRecursive(Node *head, int n) {
+    if(head -> data == n){
+        return 0;
+    }
+    
+    if(head == NULL || head -> next == NULL){
+        return -1;
+    }
+
+    int smallAns = indexOfNRecursive(head->next, n);
+   
+    if(smallAns != -1){
+        return smallAns +1;
+    }else{
+        return -1;
+    }
+    
+}
+
+int main(){
+    
 }
