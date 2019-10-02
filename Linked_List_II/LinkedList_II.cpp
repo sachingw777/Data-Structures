@@ -111,7 +111,3 @@ int indexOfNRecursive(Node *head, int n) {
     }
     
 }
-
-int main(){
-    
-}
