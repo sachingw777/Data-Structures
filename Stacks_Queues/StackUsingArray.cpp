@@ -6,10 +6,10 @@ class StackUsingArray{
     int capacity;
 
     public:
-        StackUsingArray(int totalSize){
-            data = new int[totalSize];
+        StackUsingArray(){      // No need for totalSize because Dynamic Array is in place. make objec and then run straight away.
+            data = new int[5];
             nextIndex = 0;
-            capacity = totalSize;
+            capacity = 5;
         }
 
         int size(){
@@ -33,6 +33,10 @@ class StackUsingArray{
             if(nextIndex == capacity){
                 // cout << "Stack is Full";
                 int *newData = new int[capacity * 2];
+                for(int i = 0; i < capacity; i++){
+                    newData[i] = data[i];
+                }
+                capacity *= 2;
                 delete [] data;
                 data = newData;
             }
