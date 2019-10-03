@@ -1,9 +1,11 @@
 #include <iostream>
 using namespace std;
 #include "QueueUsingArray.h"
+#include "QueueUsingLL.h"
 
 int main() {
-	QueueUsingArray<int> q(5);
+	// QueueUsingArray<int> q(5);
+	QueueUsingLL<int> q;
 
 	q.enqueue(10);
 	q.enqueue(20);
