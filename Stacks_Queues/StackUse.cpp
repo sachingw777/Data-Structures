@@ -2,11 +2,13 @@
 using namespace std;
 #include "StackUsingArray.cpp"
 #include "StackUsingTemplates.h"
-#include "StackUsingLL.cpp"
+#include "StackUsingLL.h"
 
 int main(){
-	StackUsingArray s;
-	StackUsingTemplates<int> s;
+	// StackUsingArray s;
+	// StackUsingTemplates<int> s;
+	StackUsingLL<char> s;
+
 	s.push(10);
 	s.push(20);
 	s.push(30);
@@ -20,7 +22,8 @@ int main(){
 	cout << s.pop() << endl;
 	cout << s.pop() << endl;
 
-	cout << s.size() << endl;
+	// cout << s.size() << endl;
+	cout << s.getSize() << endl;
 
 	cout << s.isEmpty() << endl;
 
