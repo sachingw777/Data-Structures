@@ -1,9 +1,12 @@
 #include <iostream>
 using namespace std;
 #include "StackUsingArray.cpp"
+#include "StackUsingTemplates.h"
+#include "StackUsingLL.cpp"
 
 int main(){
-	StackUsingArray s(4);
+	StackUsingArray s;
+	StackUsingTemplates<int> s;
 	s.push(10);
 	s.push(20);
 	s.push(30);
