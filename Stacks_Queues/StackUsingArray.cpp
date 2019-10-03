@@ -12,6 +12,10 @@ class StackUsingArray{
             capacity = 5;
         }
 
+        ~StackUsingArray(){
+            delete [] data;
+        }
+
         int size(){
             return nextIndex;
         }
