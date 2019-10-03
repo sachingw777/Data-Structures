@@ -32,6 +32,10 @@ class StackUsingTemplates{
             if(nextIndex == capacity){
                 // cout << "Stack is Full";
                 T *newData = new T[capacity * 2];
+                for(T i = 0; i < capacity; i++){
+                    newData[i] = data[i];
+                }
+                capacity *= 2;
                 delete [] data;
                 data = newData;
             }
