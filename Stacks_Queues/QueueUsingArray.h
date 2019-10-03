@@ -1,13 +1,14 @@
+template <typename T>
 class QueueUsingArray{
-    int *data;
+    T *data;
     int nextIndex;
     int firstIndex;
     int size;
     int capacity;
 
     public:
-    
-    QueueUsingArray(int s){
+
+    QueueUsingArray(T s){
         data = new int[5];
         nextIndex = 0, firstIndex = -1;
         size = 0;
@@ -22,20 +23,37 @@ class QueueUsingArray{
         return (size == 0);
     }
 
-    void enqueue(int element){
-        if(nextIndex == 0){
-            firstIndex++;
+    T front(){
+      if(firstIndex == -1){
+        cout << "Queue Empty";
+        return 0;
+      }
+    }
+
+    void enqueue(T element){
+      if(size == capacity){
+        cout << "Queue Full";
+      }
+        if(firstIndex == -1){
+            firstIndex = 0;
         }
         data[nextIndex] = element;
         size++;
         nextIndex = (nextIndex + 1) % capacity;
     }
 
-    int dequeue(){
+    T dequeue(){
+      if(isEmpty()){
+        cout << "Queue Empty";
+        return 0;
+      }
         int ans = data[firstIndex];
-        firstIndex++;
+        firstIndex = (firstIndex +1) % capacity;
         size--;
-        return ans;    
+        if(size == 0){
+          firstIndex = -1;
+          nextIndex = 0;
+        }
+        return ans;
     }
-
 };
