@@ -1,6 +1,35 @@
 #include <iostream>
 #include "TreeNode.h"
+#include <queue>
 using namespace std;
+
+TreeNode<int>* takeInputLevelWise(){
+    int rootData;
+    cout << "Enter Root:" << endl;
+    cin >> rootData;
+    TreeNode<int>* root = new TreeNode<int>(rootData);
+    queue<TreeNode<int>*> pendingNodes;
+    pendingNodes.push(root);
+
+    while(pendingNodes.size() != 0){
+        TreeNode<int>* front = pendingNodes.front();
+        pendingNodes.pop();
+
+        cout << "Enter number of children of " << front -> data << endl;
+        int numchild;
+        cin >> numchild;
+
+        for(int i = 0; i < numchild; i++){
+            int childData;
+            cout << "Enter" << i << "th child of " << rootData << endl;
+            cin >> childData; 
+            TreeNode<int>* child = new TreeNode<int>(childData);
+            front -> children.push_back(child);
+            pendingNodes.push(child);
+        }
+    }
+    return root;
+}
 
 TreeNode<int>* takeInput(){
     int rootdata, n;
@@ -32,11 +61,13 @@ void printTree(TreeNode<int> * root){
     }
 }
 int main(){
+    /*
     TreeNode<int>* root = new TreeNode<int>(1);
     TreeNode<int>* node1 = new TreeNode<int>(2);
     TreeNode<int>* node2 = new TreeNode<int>(3);
     root -> children.push_back(node1);
     root -> children.push_back(node2);
-
+    */
+    TreeNode<int>* root = takeInputLevelWise();
     printTree(root);
 };
