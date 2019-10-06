@@ -84,6 +84,33 @@ void printTree(TreeNode<int> * root){
         printTree(root->children[i]);
     }
 }
+int countNodes(TreeNode<int>* root){
+    int ans = 1;
+    for(int i = 0; i < root -> children.size(); i++){
+        ans += countNodes(root -> children[i]);
+    }
+    return ans;
+}
+
+int sumOfNodes(TreeNode<int>* root) {
+    int sum = root -> data;
+    for(int i = 0; i < root -> children.size(); i++){
+        sum += sumOfNodes(root -> children[i]);
+    }
+    return sum;
+}
+
+TreeNode<int>* maxDataNode(TreeNode<int>* root) {
+    TreeNode<int> * max = root;
+    for(int i = 0;i < root -> children.size(); i++){
+        TreeNode<int>* temp = maxDataNode(root -> children[i]);
+        if(temp -> data > max -> data){
+            max = temp;
+        }
+    }
+    return max;
+}
+
 int main(){
     /*
     TreeNode<int>* root = new TreeNode<int>(1);
