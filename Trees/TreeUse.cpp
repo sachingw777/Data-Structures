@@ -111,6 +111,17 @@ TreeNode<int>* maxDataNode(TreeNode<int>* root) {
     return max;
 }
 
+int height(TreeNode<int>* root) {
+    int ans = 0;
+    for(int i = 0; i < root -> children.size(); i++){
+        int small = height(root -> children[i]);
+        if(small > ans){
+            ans = small;
+        }
+    }
+    return ans + 1;
+}
+
 int main(){
     /*
     TreeNode<int>* root = new TreeNode<int>(1);
@@ -120,5 +131,6 @@ int main(){
     root -> children.push_back(node2);
     */
     TreeNode<int>* root = takeInputLevelWise();
-    printTree(root);
+    // printTree(root);
+    printTreeLevelWise(root);
 };
