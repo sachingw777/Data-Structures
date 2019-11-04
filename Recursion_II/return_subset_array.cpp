@@ -20,7 +20,7 @@ int sub(int input[], int startIndex, int n, int output[][20]){
 	int outputSize = sub(input, startIndex + 1, n, output);
 
 	for(int i = 0; i < outputSize; i++){
-		output[i + outputSize][0] += output[i][0] + 1;
+		output[i + outputSize][0] = output[i][0] + 1;
 		output[i + outputSize][1] = input[startIndex];
 
 		for(int j = 1; j <= output[i][0]; j++){
