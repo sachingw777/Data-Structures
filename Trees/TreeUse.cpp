@@ -135,6 +135,17 @@ void printAtLevelK(TreeNode<int>* root, int k){
     }
 }
 
+int numLeafNodes(TreeNode<int>* root) {
+    if(root -> children.size() == 0){
+        return 1;
+    }
+    int ans = 0;
+    for(int i = 0; i < root -> children.size(); i++){
+        ans += numLeafNodes(root -> children[i]);
+    }
+    return ans;
+}
+
 int main(){
     /*
     TreeNode<int>* root = new TreeNode<int>(1);
