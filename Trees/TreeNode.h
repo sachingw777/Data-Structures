@@ -3,11 +3,17 @@ using namespace std;
 
 template <typename T>
 class TreeNode{
-    public:
-        T data;
-        vector <TreeNode*> children;
-            
-        TreeNode(T data){
-            this -> data = data;
-        }
+public:
+    T data;
+    vector <TreeNode*> children;
+        
+    TreeNode(T data){
+        this -> data = data;
+    }
+
+    ~TreeNode(T data){
+    	for(int i = 0; i < children.size(); i++){
+    		delete children[i];
+    	}
+    }  
 };
