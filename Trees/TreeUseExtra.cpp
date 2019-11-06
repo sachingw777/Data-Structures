@@ -119,3 +119,14 @@ void replaceWithDepthValue_helper(TreeNode<int> *root, int depth){
 void replaceWithDepthValue(TreeNode<int> *root){    
     replaceWithDepthValue_helper(root, 0);
 }
+int numLeafNodes(TreeNode<int>* root) {
+    int count = 0;
+    if(root->numChildren() == 0){
+        count += 1;
+    }
+
+    for(int i = 0; i < root->numChildren(); i++){
+        count += numLeafNodes(root->getChild(i));
+    }
+    return count;
+}
