@@ -5,13 +5,13 @@ template <typename T>
 class TreeNode{
 public:
     T data;
-    vector <TreeNode*> children;
+    vector <TreeNode<T>*> children;
         
     TreeNode(T data){
         this -> data = data;
     }
 
-    ~TreeNode(T data){
+    ~TreeNode(){
     	for(int i = 0; i < children.size(); i++){
     		delete children[i];
     	}
