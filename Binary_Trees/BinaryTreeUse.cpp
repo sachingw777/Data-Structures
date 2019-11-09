@@ -162,6 +162,7 @@ BinaryTreeNode<int>* takeInput( ){
 
 /*
 8 3 10 1 6 -1 14 -1 -1 4 7 13 -1 -1 -1 -1 -1 -1 -1
+1 2 3 4 5 6 7 -1 -1 -1 -1 8 9 -1 -1 -1 -1 -1 -1
 */
 int main(){
 	// BinaryTreeNode<int>* root = new BinaryTreeNode<int>(1);
@@ -175,4 +176,8 @@ int main(){
 	BinaryTreeNode<int>*root =  takeInputLevelWise();
 	// takeInput();
 	printTreeLevelWise(root);
+	// inOrder(root);
+	mirror(root);
+	printTreeLevelWise(root);
+	delete root;
 }
