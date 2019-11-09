@@ -3,6 +3,42 @@
 #include <queue>
 using namespace std;
 
+BinaryTreeNode<int>* helper_getTreeFromPostorderAndInorder(int *postorder, int postorderStart, int postorderEnd, int *inorder, int inorderStart, int inorderEnd){
+	if(inorderStart > inorderEnd){
+		return NULL;
+	}
+
+	int rootData = postorder[postorderEnd];
+	BinaryTreeNode<int>* root = new BinaryTreeNode<int>(rootData);
+	int rootIndex_post = postorderEnd;
+	int rootIndex_inorder;
+
+	for(int i = inorderStart; i <= inorderEnd; i++){
+		if(inorder[i] == rootData){
+			rootIndex_inorder = i;
+			break;
+		}
+	}
+
+	int left_inorderStart = inorderStart;
+	int left_inorderEnd = rootIndex_inorder - 1;
+	int right_inorderStart = rootIndex_inorder + 1;
+	int right_inorderEnd = inorderEnd;
+	
+	int left_postorderStart = postorderStart;
+    int left_postorderEnd =  left_inorderEnd - left_inorderStart + left_postorderStart;
+	int right_postorderEnd = rootIndex_post - 1;
+	int right_postorderStart = left_postorderEnd + 1;
+
+	root -> left = helper_getTreeFromPostorderAndInorder(postorder, left_postorderStart, left_postorderEnd, inorder, left_inorderStart, left_inorderEnd);
+	root -> right = helper_getTreeFromPostorderAndInorder(postorder, right_postorderStart, right_postorderEnd, inorder, right_inorderStart, right_inorderEnd);
+	return root;
+}
+
+BinaryTreeNode<int>* getTreeFromPostorderAndInorder(int *postorder, int postLength, int *inorder, int inLength) {
+    return helper_getTreeFromPostorderAndInorder(postorder, 0, postLength - 1, inorder, 0, inLength - 1);
+}
+
 BinaryTreeNode<int>* buildTreeHelper(int *preorder, int preorderStart, int preorderEnd, int *inorder, int inorderStart, int inorderEnd) {
     if(inorderStart > inorderEnd){
         return NULL;
