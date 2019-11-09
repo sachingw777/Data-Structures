@@ -18,6 +18,24 @@ void printTree(BinaryTreeNode<int>* root){
 	printTree(root -> left);
 	printTree(root -> right);
 }
+
+BinaryTreeNode<int>* takeInput(BinaryTreeNode<int>* root){
+	int rootData;
+	cout << "Enter data" << endl;
+	cin >> rootData;
+
+	if(rootData == -1){
+		retunr NULL;
+	}
+
+	BinaryTreeNode<int>* root = new BinaryTreeNode<int>*(rootData);
+	BinaryTreeNode<int>* leftChild = takeInput();
+	BinaryTreeNode<int>* rightChild = takeInput();
+
+	root -> left = leftChild;
+	root -> right = rightChild;
+}
+
 int main(){
 	BinaryTreeNode<int>* root = new BinaryTreeNode<int>(1);
 	BinaryTreeNode<int>* node1 = new BinaryTreeNode<int>(2);
