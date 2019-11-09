@@ -130,3 +130,30 @@ int numLeafNodes(TreeNode<int>* root) {
     }
     return count;
 }
+
+bool isIdentical(TreeNode<int>* root1, TreeNode<int>* root2){
+    if(root1 == NULL && root2 == NULL){
+        return false;
+    }
+
+    if((root1 != NULL && root2 == NULL) || (root1 == NULL && root2 != NULL)){
+        return false;
+    }
+
+    if((root1 -> data != root2->data) || (root1->numChildren() != root2->numChildren())){
+        return false;
+    }
+    int i = 0;
+    while(i < root1->numChildren()){
+        TreeNode<int>* child1 = root1->getChild(i);
+        TreeNode<int>* child2 = root2->getChild(i);
+
+        if(isIdentical(child1, child2)){
+            i++;
+        }
+        else{
+            return false;
+        }
+    }
+    return true;
+}
