@@ -3,6 +3,56 @@
 #include <queue>
 using namespace std;
 
+void mirrorBinaryTree(BinaryTreeNode<int>* root) {
+   	if(root == NULL){
+   		return;
+   	}
+
+   	mirrorBinaryTree(root -> left);
+   	mirrorBinaryTree(root -> right);
+
+    BinaryTreeNode<int>* temp = root -> left;
+    root -> left = root -> right;
+    root -> right = temp;
+}
+
+int height(BinaryTreeNode<int> *root) {
+    if(root == NULL){
+        return 0;
+    }
+
+    int searchLeft = height(root -> left);
+    int searchRight = height(root -> right);
+    
+    return max (searchLeft,searchRight) + 1;
+}
+
+bool isNodePresent(BinaryTreeNode<int>* root, int x) {
+	if(root == NULL){
+		return false;
+	}
+
+	if(root -> data == x){
+		return true;
+	}
+
+	// return isNodePresent(root -> left, x) || isNodePresent(root -> right, x);
+	bool searchLeft = isNodePresent(root -> left, x);
+	bool searchRight = isNodePresent(root -> right, x);
+
+	return searchLeft || searchRight;	
+}
+
+void inOrder(BinaryTreeNode<int>* root){
+	if(root == NULL){
+		return;
+	}
+
+	inOrder(root -> left);
+	cout << root -> data << " ";
+	inOrder(root -> right);
+}
+
 void printTreeLevelWise(BinaryTreeNode<int>* root){
 	if(root == NULL){
 		return;
