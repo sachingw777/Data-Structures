@@ -3,6 +3,37 @@
 #include <queue>
 using namespace std;
 
+BinaryTreeNode<int>* buildTreeHelper(int *preorder, int preorderStart, int preorderEnd, int *inorder, int inorderStart, int inorderEnd) {
+    if(inorderStart > inorderEnd){
+        return NULL;
+    }
+	int rootData = preorder[preorderStart];
+	BinaryTreeNode<int>* root = new BinaryTreeNode<int>(rootData);
+	int rootIndex;
+	for(int i = inorderStart; i <= inorderEnd; i++){
+		if(inorder[i] == rootData){
+			rootIndex = i;
+			break;
+		}
+	}
+	int left_inorderStart = inorderStart;
+	int left_inorderEnd = rootIndex - 1;
+	int left_preorderStart = preorderStart + 1;
+	int left_preorderEnd =  left_inorderEnd - left_inorderStart + left_preorderStart;
+	int right_preorderEnd = preorderEnd;
+	int right_preorderStart = left_preorderEnd + 1;
+	int right_inorderStart = rootIndex + 1;
+	int right_inorderEnd = inorderEnd;
+
+	root -> left = buildTreeHelper(preorder, left_preorderStart, left_preorderEnd, inorder, left_inorderStart, left_inorderEnd);
+	root -> right = buildTreeHelper(preorder, right_preorderStart, right_preorderEnd, inorder, right_inorderStart, right_inorderEnd);
+	return root;
+}
+
+BinaryTreeNode<int>* buildTree(int *preorder, int preLenght, int *inorder, int inLength) {
+	return buildTreeHelper(preorder, 0, preLenght - 1, inorder, 0, inLength - 1);
+}
+
 void postOrder(BinaryTreeNode<int> *root) {
     if(root == NULL){
         return;
