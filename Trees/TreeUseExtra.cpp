@@ -75,6 +75,22 @@ void maxSumNode_helper2(TreeNode<int>* root, TreeNode<int>** resNode, int* max){
     return;
 }
 
+//Method 3.
+TreeNode<int>* maxSumNode3(TreeNode<int> *root){
+    TreeNode<int>* max = root;
+    int sum = root->data;
+    for(int i = 0; i < root -> numChildren(); i++){
+        sum += root->getChild[i]->data;
+        TreeNode<int>* temp = maxSumNode3(root->getChild[i])
+            if(temp -> data > sum->data){
+        temp = sum;
+        }
+    }
+A
+
+
+}
+
 TreeNode<int>* maxSumNode(TreeNode<int> *root){
     TreeNode<int>* resNode;
     int maxSum = 0;
