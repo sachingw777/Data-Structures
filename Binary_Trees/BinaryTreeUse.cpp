@@ -1,7 +1,32 @@
 #include <iostream>
 #include "BinaryTreeNode.h"
 #include <queue>
+#include<climits>
 using namespace std;
+
+ // PairAns class -
+class PairAns {
+    public :
+        int min;
+        int max;
+};
+
+PairAns minMax(BinaryTreeNode<int> *root) {
+    if(root == NULL){
+    	PairAns p;
+    	p.min = INT_MAX;
+    	p.max = INT_MIN;
+    	return p;
+    }
+
+    PairAns leftAns = minMax(root -> left);
+    PairAns rightAns = minMax(root -> right);
+
+   	PairAns ans;
+    ans.max = max(max(leftAns.max, rightAns.max), root -> data);
+    ans.min = min(min(leftAns.min, rightAns.min), root -> data);
+    return ans;
+}
 
 pair<int,int> heightDiameter(BinaryTreeNode<int>* root){
 	if(root == NULL){
@@ -19,7 +44,7 @@ pair<int,int> heightDiameter(BinaryTreeNode<int>* root){
 	int left_diameter =leftAns.second;
 	int right_diameter =rightAns.second;
 
-	int height = max(left_height, right_height);
+	int height = 1 + max(left_height, right_height);
 	int diameter = max(left_height + right_height, max(left_diameter, right_diameter));
 	pair<int,int> p;
 	p.first = height;
