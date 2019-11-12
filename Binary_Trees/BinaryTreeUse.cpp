@@ -3,6 +3,25 @@
 #include <queue>
 using namespace std;
 
+int heightfordiameter(BinaryTreeNode<int>* root){
+	if(root == NULL){
+		return 0;
+	}
+	return 1 + max(heightfordiameter(root -> left), heightfordiameter(root -> right));
+}
+
+int diameter(BinaryTreeNode<int>* root){
+	if(root == NULL){
+		return 0;
+	}
+
+	int option1 = heightfordiameter(root -> left) + heightfordiameter(root -> right);
+	int option2 = diameter(root -> left);
+	int option3 = diameter(root -> right);
+
+	return max(option1, max(option2, option3));
+}
+
 BinaryTreeNode<int>* helper_getTreeFromPostorderAndInorder(int *postorder, int postorderStart, int postorderEnd, int *inorder, int inorderStart, int inorderEnd){
 	if(inorderStart > inorderEnd){
 		return NULL;
