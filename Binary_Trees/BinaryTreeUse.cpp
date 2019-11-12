@@ -4,6 +4,25 @@
 #include<climits>
 using namespace std;
 
+bool isBalanced(BinaryTreeNode<int> *root) { 
+//O(nlogn)
+    if(root == NULL){
+        return true;
+    }
+
+    int rightHeight = height(root -> right);
+    int leftHeight = height(root -> left);
+    
+    if(abs(rightHeight - leftHeight) <= 1){
+    	bool leftAns = isBalanced(root -> left);
+    	bool rightAns = isBalanced(root -> right);
+
+    	return leftAns && rightAns;
+    }else{
+    	return false;
+    }
+}
+
  // PairAns class -
 class PairAns {
     public :
