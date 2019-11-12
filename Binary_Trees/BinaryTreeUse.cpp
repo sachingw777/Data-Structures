@@ -4,6 +4,39 @@
 #include<climits>
 using namespace std;
 
+pair<bool,int> helper_isbalanced(BinaryTreeNode<int>* root){
+	if(root == NULL){
+		pair<bool,int> p;
+		p.first = true;
+		p.second = 0;
+		return p;
+	}
+
+	pair<bool,int> leftAns = helper_isbalanced(root -> left);
+	pair<bool,int> rightAns = helper_isbalanced(root -> right);
+
+    bool flag;
+	if((leftAns.first && rightAns.first == true) && (abs(leftAns.second - rightAns.second)) <= 1){
+		flag = true;
+	}else{
+		flag = false;
+	}
+	
+	pair<bool,int> p;
+	p.first = flag;
+	p.second = max(leftAns.second, rightAns.second) + 1;
+	return p;
+}
+
+bool isBalanced_optimized(BinaryTreeNode<int> *root) { 
+    if(root == NULL){
+        return true;
+    }
+	
+	pair<bool,int> p = helper_isbalanced(root);
+	return p.first;
+}
+
 bool isBalanced(BinaryTreeNode<int> *root) { 
 //O(nlogn)
     if(root == NULL){
