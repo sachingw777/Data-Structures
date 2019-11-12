@@ -3,6 +3,30 @@
 #include <queue>
 using namespace std;
 
+pair<int,int> heightDiameter(BinaryTreeNode<int>* root){
+	if(root == NULL){
+		pair<int,int> p;
+		p.first = 0;
+		p.second = 0;
+		return p;
+	}
+
+	pair<int,int> leftAns = heightDiameter(root -> left);
+	pair<int,int> rightAns = heightDiameter(root -> right);
+
+	int left_height = leftAns.first;
+	int right_height = rightAns.first;
+	int left_diameter =leftAns.second;
+	int right_diameter =rightAns.second;
+
+	int height = max(left_height, right_height);
+	int diameter = max(left_height + right_height, max(left_diameter, right_diameter));
+	pair<int,int> p;
+	p.first = height;
+	p.second = diameter;
+	return p;
+}
+
 int heightfordiameter(BinaryTreeNode<int>* root){
 	if(root == NULL){
 		return 0;
@@ -280,9 +304,15 @@ int main(){
 	// takeInput();
 	BinaryTreeNode<int>*root =  takeInputLevelWise();
 	// takeInput();
-	printTreeLevelWise(root);
+	// printTreeLevelWise(root);
 	// inOrder(root);
-	mirror(root);
+	// mirror(root);
 	printTreeLevelWise(root);
+	// buildTreeHelper();
+	// diameter(root);
+	cout << endl;
+	pair<int,int> p = heightDiameter(root);
+	cout << "Height:- " << p.first;
+	cout << "Diameter:- " << p.second;
 	delete root;
 }
