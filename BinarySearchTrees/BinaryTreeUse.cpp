@@ -4,6 +4,22 @@
 #include<climits>
 using namespace std;
 
+BinaryTreeNode<int>* helper_constructTree(int *input, int startIndex, int endIndex){
+    if(startIndex > endIndex){
+        return NULL;
+    }    
+    
+    int mid = (startIndex + endIndex)/2;
+    BinaryTreeNode<int>* root = new BinaryTreeNode<int>(input[mid]);
+    root ->left = helper_constructTree(input, startIndex, mid - 1);
+    root ->right = helper_constructTree(input, mid + 1, endIndex);
+    return root;
+}
+
+BinaryTreeNode<int>* constructTree(int *input, int n) {
+    return helper_constructTree(input, 0, n - 1);
+}
+
 bool isBST3(BinaryTreeNode<int>* root, int min = INT_MAX, int max = INT_MIN){
 	if(root == NULL){
 		return true;
