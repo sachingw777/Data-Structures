@@ -3,7 +3,32 @@
 #include <queue>
 #include<climits>
 using namespace std;
+class isBSTReturn{
+	public:
+		int max;
+		int min;
+		bool isBST;
+};
 
+isBSTReturn isBST2(BinaryTreeNode<int>* root){
+	if(root == NULL){
+		isBSTReturn output;
+		output.max = INT_MIN;
+		output.min = INT_MAX;
+		output.isBST = true;
+		return output;
+	}
+
+	isBSTReturn leftOutput = isBST2(root -> left);
+	isBSTReturn rightOutput = isBST2(root -> right);
+	
+	bool isBSTFinal = (root -> data > leftOutput.max) && (root -> data <= rightOutput.min) && rightOutput.isBST && leftOutput.isBST;
+	isBSTReturn output;
+	output.max = max(root -> data, max(leftOutput.max, rightOutput.max));
+	output.min = min(root -> data, min(leftOutput.min, rightOutput.min));
+	output.isBST = isBSTFinal;
+	return output;
+}
 
 int maximum(BinaryTreeNode<int>* root){
 	if(root == NULL){
