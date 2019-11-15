@@ -54,7 +54,7 @@ int maximum(BinaryTreeNode<int>* root){
 
 int minimum(BinaryTreeNode<int>* root){
 	if(root == NULL){
-		return INT_MIN;
+		return INT_MAX;
 	}
 
 	return min(root -> data, min(minimum(root -> left), minimum(root -> right)));
@@ -161,6 +161,17 @@ bool isBalanced_optimized(BinaryTreeNode<int> *root) {
 	
 	pair<bool,int> p = helper_isbalanced(root);
 	return p.first;
+}
+
+int height(BinaryTreeNode<int> *root) {
+    if(root == NULL){
+        return 0;
+    }
+
+    int searchLeft = height(root -> left);
+    int searchRight = height(root -> right);
+    
+    return max (searchLeft,searchRight) + 1;
 }
 
 bool isBalanced(BinaryTreeNode<int> *root) { 
@@ -348,17 +359,6 @@ void mirrorBinaryTree(BinaryTreeNode<int>* root) {
     root -> right = temp;
 }
 
-int height(BinaryTreeNode<int> *root) {
-    if(root == NULL){
-        return 0;
-    }
-
-    int searchLeft = height(root -> left);
-    int searchRight = height(root -> right);
-    
-    return max (searchLeft,searchRight) + 1;
-}
-
 bool isNodePresent(BinaryTreeNode<int>* root, int x) {
 	if(root == NULL){
 		return false;
@@ -495,6 +495,7 @@ BinaryTreeNode<int>* takeInput( ){
 /*
 8 3 10 1 6 -1 14 -1 -1 4 7 13 -1 -1 -1 -1 -1 -1 -1
 1 2 3 4 5 6 7 -1 -1 -1 -1 8 9 -1 -1 -1 -1 -1 -1
+4 2 6 1 3 5 7 -1 -1 -1 -1 -1 -1 -1 -1
 */
 int main(){
 	// BinaryTreeNode<int>* root = new BinaryTreeNode<int>(1);
@@ -510,12 +511,16 @@ int main(){
 	// printTreeLevelWise(root);
 	// inOrder(root);
 	// mirror(root);
-	printTreeLevelWise(root);
+	// printTreeLevelWise(root);
 	// buildTreeHelper();
 	// diameter(root);
-	cout << endl;
-	pair<int,int> p = heightDiameter(root);
-	cout << "Height:- " << p.first;
-	cout << "Diameter:- " << p.second;
+	// cout << endl;
+	// pair<int,int> p = heightDiameter(root);
+	// cout << "Height:- " << p.first;
+	// cout << "Diameter:- " << p.second;
+	isBSTReturn output = isBST2(root);
+	cout << endl << "OUTPUT : ";
+	cout << output.isBST;
+	// printTreeLevelWise(root);
 	delete root;
 }
