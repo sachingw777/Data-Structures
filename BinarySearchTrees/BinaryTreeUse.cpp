@@ -4,6 +4,52 @@
 #include<climits>
 using namespace std;
 
+
+class Pair{
+    public:
+    Node<int>* head;
+    Node<int>* tail;
+};
+
+Pair helper_constructBST(BinaryTreeNode<int>* root){
+    if(root == NULL){
+        Pair p;
+        p.head = NULL;
+        p.tail = NULL;
+        return p;
+    }
+
+    Pair leftOutput = helper_constructBST(root -> left);
+    Pair rightOutput = helper_constructBST(root -> right);
+    
+    Node<int>* r = new Node<int>(root -> data);
+    if(leftOutput.tail != NULL){
+    	leftOutput.tail -> next = r;
+    	r -> next = rightOutput.head;
+    }
+
+    Pair p;
+    if(leftOutput.head != NULL){
+    	p.head = leftOutput.head;
+    }else{
+    	p.head = r;
+    }
+
+    if(rightOutput.tail != NULL){
+    	p.tail = rightOutput.tail;
+    }else{
+    	p.tail = r;
+    }
+
+    return p;
+}
+
+
+Node<int>* constructBST(BinaryTreeNode<int>* root) {
+    Pair out = helper_constructBST(root);
+    return out.head;
+}
+
 BinaryTreeNode<int>* helper_constructTree(int *input, int startIndex, int endIndex){
     if(startIndex > endIndex){
         return NULL;
