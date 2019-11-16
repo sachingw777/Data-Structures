@@ -1,9 +1,35 @@
 #include <iostream>
 #include "BinaryTreeNode.h"
 #include <queue>
-#include<climits>
+#include <climits>
 using namespace std;
 
+vector<int>* findPath(BinaryTreeNode<int>* root , int data){
+    if(root == NULL){
+        return NULL;
+    }
+
+    if(root -> data == data){
+    	vector<int>* output = new vector<int>();
+    	output->push_back(root -> data);
+    	return output;
+    }
+
+    vector<int>* leftOutput = findPath(root -> left);
+    if(leftOutput != NULL){
+    	leftOutput -> push_back(root->data);
+    	return leftOutput;
+    }
+
+    vector<int>* rightOutput = findPath(root -> right);
+    if(rightOutput != NULL){
+    	rightOutput -> push_back(root->data);
+    	return rightOutput;
+    }else{
+    	return NULL;
+    }
+
+}
 
 class Pair{
     public:
