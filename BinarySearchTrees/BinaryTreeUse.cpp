@@ -15,20 +15,19 @@ vector<int>* findPath(BinaryTreeNode<int>* root , int data){
     	return output;
     }
 
-    vector<int>* leftOutput = findPath(root -> left);
+    vector<int>* leftOutput = findPath(root -> left, data);
     if(leftOutput != NULL){
     	leftOutput -> push_back(root->data);
     	return leftOutput;
     }
 
-    vector<int>* rightOutput = findPath(root -> right);
+    vector<int>* rightOutput = findPath(root -> right, data);
     if(rightOutput != NULL){
     	rightOutput -> push_back(root->data);
     	return rightOutput;
     }else{
     	return NULL;
     }
-
 }
 
 class Pair{
