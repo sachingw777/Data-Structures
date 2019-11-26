@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 //DFS
@@ -71,5 +72,13 @@ int main(){
 	for(int i = 0; i < n; i++){
 		visited[i] = false;
 	}
-	print(edges, n, 0, visited);
+
+	// print(edges, n, 0, visited);
+ 	cout << "BFS:";
+ 	printBFS(edges, n, 0);
+	for(int i = 0; i < n; i++){
+		delete [] edges[i];
+	}
+	delete [] edges;
+	delete [] visited;
 }
