@@ -27,4 +27,25 @@ public:
 	void insertWord(string word){
 		insertWord(root, word);
 	}
+
+    bool search(TrieNode *root, string word) {
+		if(word.size() == 0){
+			return root -> isTerminal;
+		}
+
+		int index = word[0] - 'a';
+		TrieNode* child;
+		
+		if(root -> children[index] != NULL){
+			child = root -> children[index];
+		}else{
+			return false;
+		}
+
+		return search(child, word.substr(1));
+    }
+
+    bool search(string word){
+    	return search(root, word);
+    }
 };
