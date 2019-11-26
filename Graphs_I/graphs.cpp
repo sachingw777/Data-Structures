@@ -2,9 +2,8 @@
 #include <queue>
 using namespace std;
 
-//DFS
 //sv - starting vertex
-void print(int** edges, int n, int sv, bool* visited){	
+void printDFS(int** edges, int n, int sv, bool* visited){	
 	cout << sv << endl;
 	visited[sv] = true;
 	for(int i = 0; i < n; i++){
@@ -15,7 +14,7 @@ void print(int** edges, int n, int sv, bool* visited){
 			if(visited[i]){
 				continue;		//to avoid endless loop b/w 2vertices of same edge
 			}
-			print(edges, n, i, visited);
+			printDFS(edges, n, i, visited);
 		}
 	}
 }
@@ -73,7 +72,8 @@ int main(){
 		visited[i] = false;
 	}
 
-	// print(edges, n, 0, visited);
+	cout << "DFS:" << endl;
+	printDFS(edges, n, 0, visited);
  	cout << "BFS:";
  	printBFS(edges, n, 0);
 	for(int i = 0; i < n; i++){
