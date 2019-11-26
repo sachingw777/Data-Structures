@@ -2,7 +2,7 @@
 // input2 - second array
 // size1 - size of first array
 // size2 - size of second array
-
+#include <unordered_map>
 void intersection(int input1[], int input2[], int size1, int size2) {
     unordered_map<int, int> m;
     for(int i = 0; i < size1; i++){

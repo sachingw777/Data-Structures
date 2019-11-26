@@ -12,6 +12,14 @@ public:
 	~BST(){
 		delete root;
 	}
+public:
+	void deleteData(int data){
+
+	}
+
+	void printTree(){
+		
+	}
 private:
 	BinaryTreeNode<int>* insert(int data, BinaryTreeNode<int>* node){
 		if(node == NULL){
