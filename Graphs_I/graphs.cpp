@@ -19,13 +19,8 @@ void printDFS(int** edges, int n, int sv, bool* visited){
 	}
 }
 
-void printBFS(int** edges, int n, int sv){
+void printBFS(int** edges, int n, int sv, bool* visited){
 	queue<int> pendingVertices;
-	bool* visited = new bool[n];
-	for(int i = 0; i < n; i++){
-		visited[i] = false;
-	}
-
 	pendingVertices.push(sv);
 	visited[sv] = true;	
 	while(!pendingVertices.empty()){
@@ -73,9 +68,13 @@ int main(){
 	}
 
 	cout << "DFS:" << endl;
-	printDFS(edges, n, 0, visited);
- 	cout << "BFS:";
- 	printBFS(edges, n, 0);
+	// printDFS(edges, n, 0, visited);
+	DFS(edges, n);
+
+ 	cout << "BFS:" << endl;
+ 	// printBFS(edges, n, 0);
+ 	BFS(edges, n);
+
 	for(int i = 0; i < n; i++){
 		delete [] edges[i];
 	}
