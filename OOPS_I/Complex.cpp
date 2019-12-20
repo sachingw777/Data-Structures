@@ -19,7 +19,7 @@ class ComplexNumbers {
         this->imaginary += C2.imaginary;
     }
     
-    void multiply(ComplexNumbers C2){
+    void multiply(ComplexNumbers const & C2){
         int real = (this -> real * C2.real) - (this -> imaginary * C2.imaginary); 
         int imaginary = (this -> real * C2.imaginary) + (this -> imaginary * C2.real);
         this->real =  real;
