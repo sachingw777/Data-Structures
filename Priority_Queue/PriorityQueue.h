@@ -42,4 +42,36 @@ public:
 			childIndex = parentIndex;
 		}
 	}
+
+	int remove(){
+	    if(isEmpty()){
+			return 0; 		//Priority Queue is Empty
+		}
+
+		int ans = pq[0];
+		pq[0] = pq[pq.size()-1];
+		int parentIndex = 0;
+		int leftChildIndex = (2 * parentIndex) + 1;
+		int rightChildIndex = (2 * parentIndex) + 2;
+
+		while(leftChildIndex < pq.size()){
+			int minIndex = parentIndex;
+			if(pq[minIndex] > pq[leftChildIndex]) {
+				minIndex = leftChildIndex;
+			}
+
+			if(rightChildIndex < pq.size() && pq[rightChildIndex] < pq[minIndex]){
+				int minIndex = rightChildIndex;
+			}
+
+			int temp = pq[minIndex];
+			pq[minIndex] = pq[parentIndex];
+			pq[parentIndex] = temp;
+		
+			parentIndex = minIndex;
+			leftChildIndex = 2 * parentIndex + 1;
+			rightChildIndex = 2 * parentIndex + 2;
+		}
+		return ans;
+	}
 };
