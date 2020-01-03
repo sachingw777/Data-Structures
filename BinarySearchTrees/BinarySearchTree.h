@@ -12,6 +12,15 @@ public:
 	~BST(){
 		delete root;
 	}
+private:
+	BinaryTreeNode delete(int data, BinaryTreeNode<int>* node){
+		if(root == NULL){
+			return NULL;
+		}
+
+		
+	}
+
 public:
 	void deleteData(int data){
 
