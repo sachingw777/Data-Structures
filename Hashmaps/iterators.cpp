@@ -23,9 +23,8 @@ int main() {
 	}
 
 	// find - gives iterator index
-	unordered_map<string, int>::iterator it2 = ourmap.find("abc");
+	unordered_map<string, int>::iterator it2 = ourmap.begin();
 	ourmap.erase(it2, it2 + 4);
-	
 
 	vector<int> v;
 	v.push_back(1);
