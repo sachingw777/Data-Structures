@@ -31,7 +31,7 @@ public:
 		while(childIndex > 0) {
 			int parentIndex = (childIndex - 1) / 2;
 
-			if(pq[childIndex] < pq[parentIndex]) {
+			if(pq[childIndex] > pq[parentIndex]) {
 				int temp = pq[childIndex];
 				pq[childIndex] = pq[parentIndex];
 				pq[parentIndex] = temp;
