@@ -93,13 +93,55 @@ Node *rev_linkedlist_itr(Node* head)
     return previous;
 }
 
-int indexOfNRecursive(Node *head, int n) {
+Node* arrange_LinkedList(Node* head)
+{
+    Node *evenHead = NULL, *evenTail = NULL, *oddHead = NULL, *oddTail = NULL;
+    if(head -> data % 2 == 0){
+        evenHead = head;
+        evenTail = head;
+        head = head -> next; 
+    }else{
+        oddHead = head;
+        oddTail = head;
+        head = head -> next;
+    }
+
+    while(head != NULL){
+        if(head -> data % 2 == 0){
+            if(evenHead == NULL){
+                evenHead = head;
+                evenTail = head;
+            }else{
+                evenTail -> next = head;
+                evenTail = evenTail -> next;
+            }
+        }else{
+            if(oddHead == NULL){
+                oddHead = head;
+                oddTail = head;
+            }else{
+                oddTail -> next = head;
+                oddTail = oddTail -> next;
+            }
+        }
+        head = head -> next;
+    }
+
+    if(oddHead != NULL){
+        oddTail -> next = evenHead;
+        return oddHead;
+    }else{
+        return evenHead;
+    }
+}
+
+int indexOfNRecursive(Node *head, int n) {    
+    if(head == NULL){
+        return -1;
+    }
+
     if(head -> data == n){
         return 0;
-    }
-    
-    if(head == NULL || head -> next == NULL){
-        return -1;
     }
 
     int smallAns = indexOfNRecursive(head->next, n);
