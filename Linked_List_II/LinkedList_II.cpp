@@ -93,6 +93,32 @@ Node *rev_linkedlist_itr(Node* head)
     return previous;
 }
 
+//1test case fail. other 5passed. check later.
+Node skipMdeleteN(Node *head, int M, int N) {
+    if(M == 0){
+        return NULL;
+    }
+    Node *previous = NULL, *temp = head;
+    int count = 1;
+
+
+    while(temp != NULL){
+        if(count == M){
+            previous = temp;
+        }
+
+        if(count == M + N){
+            previous -> next = temp -> next;
+            count = 0;
+        }
+
+        count++;
+        temp = temp -> next;
+    }
+    previous -> next = NULL;
+    return head;
+}
+
 Node* arrange_LinkedList(Node* head)
 {
     Node *evenHead = NULL, *evenTail = NULL, *oddHead = NULL, *oddTail = NULL;
