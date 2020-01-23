@@ -76,5 +76,5 @@ int keypad(int num, string output[]){
             k++;
         }
     }
-    return smallOutputSize + options.length();
+    return smallOutputSize * options.length();
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 #include "Node.cpp"
-
+ 
 Node *takeInput_Better(){
     int data;
     cin >> data;
