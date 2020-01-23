@@ -232,6 +232,40 @@ void print_linkedlist_spl(Node*head)
     cout << head->data << " ";
 }
 
+Node* reverse(Node* head){
+    if(head == NULL || head -> next == NULL){
+        return head;
+    }
+    
+    Node* second = reverse(head -> next);
+    head -> next -> next = head;
+    head -> next = NULL;
+    head = second;
+    return head;
+}
+
+bool check_palindrome(Node* head)
+{
+    Node* fast = head -> next, *slow = head;
+    while(fast != NULL && fast -> next != NULL){
+        slow = slow -> next;
+        fast = fast -> next -> next;
+    }
+    
+    Node* secondhead = slow -> next;
+    slow -> next = NULL;
+    Node* second = reverse(secondhead);
+    while(head != NULL && second != NULL){
+        if(head -> data == second -> data){
+            head = head->next;
+            second = second->next;
+        }else{
+            return false;
+        }
+    }
+    return true;
+}
+
 int main(){
 
     Node *head = takeInput_Better();
