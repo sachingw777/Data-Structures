@@ -105,23 +105,25 @@ TreeNode<int>* maxSumNode(TreeNode<int> *root){
 //     }
 // }
 
-
-// TLE.
 TreeNode<int>* nextLargerElement(TreeNode<int> *root, int n) {
     if(root == NULL){
         return root;
     }
-    
-    TreeNode<int>* ans = NULL;
+    TreeNode<int> * ans;
     if(root->data > n){
         ans = root;
+    }else{
+        ans = NULL;
     }
     
     for(int i = 0; i < root -> numChildren(); i++){
         TreeNode<int>* temp = nextLargerElement(root -> getChild(i), n);
-        if(ans->data == NULL){
+        
+        if(ans == NULL && temp != NULL){
             ans = temp;
-        }else if(temp != NULL && temp-> data < ans->data){
+        }
+
+        if(temp != NULL && temp-> data < ans->data){
             ans = temp;
         }
     }
