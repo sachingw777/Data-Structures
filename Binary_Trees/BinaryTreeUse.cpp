@@ -316,6 +316,19 @@ void inOrder(BinaryTreeNode<int>* root){
 	inOrder(root -> right);
 }
 
+void mirrorBinaryTree(BinaryTreeNode<int>* root) {
+	if(root == NULL){
+		return;
+	}
+    mirrorBinaryTree(root -> left);
+    mirrorBinaryTree(root -> right);
+	
+    BinaryTreeNode<int> *templeft = root -> left;
+	root -> left = root -> right;
+	root -> right = templeft;
+}
+
+
 int height(BinaryTreeNode<int> *root) {
     if(root == NULL){
         return 0;
