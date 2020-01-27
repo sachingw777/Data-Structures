@@ -316,19 +316,6 @@ void inOrder(BinaryTreeNode<int>* root){
 	inOrder(root -> right);
 }
 
-void mirrorBinaryTree(BinaryTreeNode<int>* root) {
-	if(root == NULL){
-		return;
-	}
-    mirrorBinaryTree(root -> left);
-    mirrorBinaryTree(root -> right);
-	
-    BinaryTreeNode<int> *templeft = root -> left;
-	root -> left = root -> right;
-	root -> right = templeft;
-}
-
-
 int height(BinaryTreeNode<int> *root) {
     if(root == NULL){
         return 0;
@@ -337,22 +324,6 @@ int height(BinaryTreeNode<int> *root) {
     int searchRight = height(root -> right);
     
     return max (searchLeft,searchRight) + 1;
-}
-
-bool isNodePresent(BinaryTreeNode<int>* root, int x) {
-	if(root == NULL){
-		return false;
-	}
-
-	if(root -> data == x){
-		return true;
-	}
-
-	// return isNodePresent(root -> left, x) || isNodePresent(root -> right, x);
-	bool searchLeft = isNodePresent(root -> left, x);
-	bool searchRight = isNodePresent(root -> right, x);
-
-	return searchLeft || searchRight;	
 }
 
 int numNodes(BinaryTreeNode<int> * root){
