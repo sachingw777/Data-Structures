@@ -316,6 +316,16 @@ void inOrder(BinaryTreeNode<int>* root){
 	inOrder(root -> right);
 }
 
+int height(BinaryTreeNode<int> *root) {
+    if(root == NULL){
+        return 0;
+    }
+    int searchLeft = height(root -> left);
+    int searchRight = height(root -> right);
+    
+    return max (searchLeft,searchRight) + 1;
+}
+
 bool isNodePresent(BinaryTreeNode<int>* root, int x) {
 	if(root == NULL){
 		return false;
