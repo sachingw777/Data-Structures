@@ -61,7 +61,8 @@ void printLevelATNewLine(BinaryTreeNode<int> *root) {
     }
 }
 
-pair<bool,int> helper_isbalanced(BinaryTreeNode<int>* root){
+pair<bool,int> isBalancedOptimized(BinaryTreeNode<int>* root){
+//O(n)
 	if(root == NULL){
 		pair<bool,int> p;
 		p.first = true;
@@ -69,8 +70,8 @@ pair<bool,int> helper_isbalanced(BinaryTreeNode<int>* root){
 		return p;
 	}
 
-	pair<bool,int> leftAns = helper_isbalanced(root -> left);
-	pair<bool,int> rightAns = helper_isbalanced(root -> right);
+	pair<bool,int> leftAns = isBalancedOptimized(root -> left);
+	pair<bool,int> rightAns = isBalancedOptimized(root -> right);
 
     bool flag;
 	if((leftAns.first && rightAns.first == true) && (abs(leftAns.second - rightAns.second)) <= 1){
@@ -83,15 +84,6 @@ pair<bool,int> helper_isbalanced(BinaryTreeNode<int>* root){
 	p.first = flag;
 	p.second = max(leftAns.second, rightAns.second) + 1;
 	return p;
-}
-
-bool isBalanced_optimized(BinaryTreeNode<int> *root) { 
-    if(root == NULL){
-        return true;
-    }
-	
-	pair<bool,int> p = helper_isbalanced(root);
-	return p.first;
 }
 
 bool isBalanced(BinaryTreeNode<int> *root) { 
