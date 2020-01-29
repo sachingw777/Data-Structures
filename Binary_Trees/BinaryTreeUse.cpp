@@ -4,6 +4,53 @@
 #include<climits>
 using namespace std;
 
+//runtime error. Need to fix this. get back later.
+vector<node<int>*> createLLForEachLevel(BinaryTreeNode<int> *root) {
+    vector<node<int>*> output;
+    queue<BinaryTreeNode<int>*> q;
+
+    q.push(root);
+    q.push(NULL);
+
+    while(!q.empty()){
+    	BinaryTreeNode<int>* front = q.front();
+    	if(front -> left != NULL){
+    		q.push(front -> left);
+    	}
+    	if(front -> right != NULL){
+    		q.push(front -> right);
+    	}
+    	node<int> *head = NULL, *tail = NULL;
+    	BinaryTreeNode<int>* temp = front;
+
+    	while(temp != NULL){
+    		node<int>* ll_n = new node(temp->data);
+    		if(head == NULL){
+    			head = ll_n;
+    			tail = ll_n;
+    		}else{
+    			tail -> next = ll_n;
+    			tail = tail -> next;
+    		}
+    		q.pop();
+    		temp = q.front();
+	    	
+	    	if(temp -> left != NULL){
+	    		q.push(temp -> left);
+	    	}
+	    	if(temp -> right != NULL){
+	    		q.push(temp -> right);
+	    	}
+    	}
+    	//NULL reached
+    	tail -> next = NULL;
+    	q.push(NULL);
+    	q.pop();
+    	output.push_back(head);
+    }
+    return output;
+}
+
 void nodesWithoutSibling(BinaryTreeNode<int> *root) {
     if(root == NULL){
         return;
@@ -103,6 +150,8 @@ bool isBalanced(BinaryTreeNode<int> *root) {
     }else{
     	return false;
     }
+//     pair<bool,int> ans = isBalancedOptimized(root);
+//     return ans.first;
 }
 
  // PairAns class -
