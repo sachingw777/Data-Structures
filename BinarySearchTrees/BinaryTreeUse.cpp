@@ -169,6 +169,19 @@ bool isBST(BinaryTreeNode<int>* root){
 	return output;
 }
 
+BinaryTreeNode<int>* searchInBST(BinaryTreeNode<int> *root , int k){
+    if(root == NULL){
+        return NULL;
+    }
+    
+    if(root -> data == k){
+        return root;
+    }else if(root -> data > k){
+        return searchInBST(root -> left, k);
+    }else if(root -> data < k){
+        return searchInBST(root -> right, k);
+    }
+}
 
 void nodesWithoutSibling(BinaryTreeNode<int> *root) {
     if(root == NULL){
