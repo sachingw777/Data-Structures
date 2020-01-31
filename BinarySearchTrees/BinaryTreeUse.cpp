@@ -101,7 +101,7 @@ BinaryTreeNode<int>* constructTree(int *input, int n) {
     return helper_constructTree(input, 0, n - 1);
 }
 
-bool isBST3(BinaryTreeNode<int>* root, int min = INT_MAX, int max = INT_MIN){
+bool isBST3(BinaryTreeNode<int>* root, int min = INT_MIN, int max = INT_MAX){
 	if(root == NULL){
 		return true;
 	}
