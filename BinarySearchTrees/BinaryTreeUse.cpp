@@ -618,7 +618,7 @@ int main(){
 	// root -> right = node2;
 
 	// takeInput();
-	BinaryTreeNode<int>*root =  takeInputLevelWise();
+	// BinaryTreeNode<int>*root =  takeInputLevelWise();
 	// takeInput();
 	// printTreeLevelWise(root);
 	// inOrder(root);
@@ -630,9 +630,21 @@ int main(){
 	// pair<int,int> p = heightDiameter(root);
 	// cout << "Height:- " << p.first;
 	// cout << "Diameter:- " << p.second;
-	isBSTReturn output = isBST2(root);
-	cout << endl << "OUTPUT : ";
-	cout << output.isBST;
+	// isBSTReturn output = isBST2(root);
+	// cout << endl << "OUTPUT : ";
+	// cout << output.isBST;
 	// printTreeLevelWise(root);
-	delete root;
+	// delete root;
+
+	BST b;
+	b.insert(10);
+	b.insert(5);
+	b.insert(20);
+	b.insert(7);
+	b.insert(3);
+	b.insert(15);
+	b.printTree();
+	b.deleteData(10);
+	b.deleteData(100);
+	b.printTree();
 }
