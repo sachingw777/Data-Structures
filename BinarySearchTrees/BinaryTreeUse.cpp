@@ -1,5 +1,6 @@
 #include <iostream>
 #include "BinaryTreeNode.h"
+#include "BinarySearchTree.h"
 #include <queue>
 #include <climits>
 using namespace std;
@@ -178,9 +179,10 @@ BinaryTreeNode<int>* searchInBST(BinaryTreeNode<int> *root , int k){
         return root;
     }else if(root -> data > k){
         return searchInBST(root -> left, k);
-    }else if(root -> data < k){
+    }else{
         return searchInBST(root -> right, k);
     }
+
 }
 
 void nodesWithoutSibling(BinaryTreeNode<int> *root) {
