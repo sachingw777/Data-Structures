@@ -64,7 +64,7 @@ private:
 			return newNode;
 		}
 
-		if(node -> data > data){
+		if(node -> data < data){
 			node -> right = insert(data,node -> right);
 		}else{
 			node -> left = insert(data, node -> left);
@@ -90,20 +90,14 @@ private:
 
 		return hasData(data, node -> left) || hasData(data, node -> right);
 }
-
-public:
-	bool hasData(int data){
-		return hasData(data, root);
-	}
-    
-    void printTree(BinaryTreeNode<int>* root){
+ void printTree(BinaryTreeNode<int>* root){
         if(root == NULL){
             return;
         }
 
         cout << root -> data << ":";
         if(root -> left != NULL){
-            cout << "L"<< root -> left -> data << ",";
+            cout << "L"<< root -> left -> data;
         }
         if(root -> right != NULL){
             cout << "R"<< root -> right -> data;
@@ -111,5 +105,14 @@ public:
         cout << endl;
         printTree(root -> left);
         printTree(root -> right); 
+    }
+
+public:
+	bool hasData(int data){
+		return hasData(data, root);
+	}
+
+	void printTree(){
+         printTree(this -> root);
     }
 };
