@@ -1,8 +1,50 @@
 #include <iostream>
 #include "BinaryTreeNode.h"
 #include <queue>
+#include <stack>
 #include<climits>
 using namespace std;
+
+//need to fix this. TLE.
+void zigZagOrder(BinaryTreeNode<int> *root) {
+    queue<BinaryTreeNode<int>*> q;
+    stack<BinaryTreeNode<int>*> s;
+
+    q.push(root);
+    cout << root -> data << endl;
+    s.push(root -> left);
+    s.push(root -> right);
+
+    while(!q.empty() || !s.empty()){
+        while(!q.empty()){
+            BinaryTreeNode<int>* front = q.front();
+
+            if(front -> left != NULL){
+                s.push(root -> left);
+            }
+            if(front -> right != NULL){
+                s.push(root -> right);
+            }
+            q.pop();
+            cout << front -> data << "";
+        }
+        
+        while(!s.empty()){
+            BinaryTreeNode<int>* front = s.top();
+            if(front -> left != NULL){
+                q.push(root -> left);
+            }
+            if(front -> right != NULL){
+                q.push(root -> right);
+            }
+            s.pop();
+            cout << front -> data << "";
+        }
+        cout << endl;
+    }
+    //     zigZagOrder(root -> left);
+    //     zigZagOrder(root -> right);
+}
 
 //runtime error. Need to fix this. get back later.
 vector<node<int>*> createLLForEachLevel(BinaryTreeNode<int> *root) {
