@@ -44,7 +44,49 @@ BinaryTreeNode<int>* lca(BinaryTreeNode<int>* root , int val1, int val2){
 
 int lcaBinaryTree(BinaryTreeNode<int>* root , int val1, int val2){
 	BinaryTreeNode<int>* ans = lca(root, val1, val2);
-	return ans -> data;
+	if(ans != NULL){
+		return ans -> data;
+	}else{
+		return -1;
+	}
+}
+
+BinaryTreeNode<int>* lcaInBST_helper(BinaryTreeNode<int>* root , int val1 , int val2){
+    if(root == NULL){
+        return NULL;
+    }
+    if(root -> data == val1 || root -> data == val2){
+        return root;
+    }
+
+    if(root -> data < val1 && root -> data < val2){
+        return lcaInBST_helper(root -> right, val1, val2);
+    }else if(root -> data > val1 && root -> data > val2){
+        return lcaInBST_helper(root -> left, val1, val2);
+    }else{
+        BinaryTreeNode<int>* leftAns = lcaInBST_helper(root -> left, val1, val2);
+        BinaryTreeNode<int>* rightAns = lcaInBST_helper(root -> right, val1, val2);
+
+        if(leftAns != NULL && rightAns != NULL){
+            return root;
+        }
+
+        if(leftAns == NULL && rightAns == NULL){
+            return NULL;
+        }
+
+        return leftAns != NULL ? leftAns : rightAns;
+    }
+
+}
+
+int lcaInBST(BinaryTreeNode<int>* root , int val1 , int val2){
+    BinaryTreeNode<int>* ans = lcaInBST_helper(root, val1, val2);
+    if(ans != NULL){
+        return ans -> data;
+    }else{
+        return -1;
+    }
 }
 
 int main() {
