@@ -80,6 +80,17 @@ BinaryTreeNode<int>* lcaInBST_helper(BinaryTreeNode<int>* root , int val1 , int 
 
 }
 
+//Another Method
+BinaryTreeNode<int>* lcaInBST_helper2(BinaryTreeNode<int>* root , int val1 , int val2){
+	if(root -> data < min(val1, val2)){
+		lcaInBST_helper2(root -> right, val1, val2);
+	}else if(root -> data > max(val1, val2)){
+		lcaInBST_helper2(root -> left, val1, val2);
+	}else{
+		return root;
+	}
+}
+
 int lcaInBST(BinaryTreeNode<int>* root , int val1 , int val2){
     BinaryTreeNode<int>* ans = lcaInBST_helper(root, val1, val2);
     if(ans != NULL){
