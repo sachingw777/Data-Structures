@@ -38,6 +38,8 @@ BinaryTreeNode<int>* lca(BinaryTreeNode<int>* root , int val1, int val2){
 	}
 
     return leftAns != NULL ? leftAns : rightAns;
+    //if(leftAns != NULL && rightAns == NULL){return leftAns;}else{return rightAns;}
+    //if one of the 2 calls comes up with a null & other with node then return that node.
 }
 
 int lcaBinaryTree(BinaryTreeNode<int>* root , int val1, int val2){
