@@ -74,10 +74,31 @@ public:
 		node -> next = head;
 		buckets[bucketIndex] = node;
 		count++;
-
 	}
 
-	
+	V remove(string key){
+		int bucketIndex = getBucketIndex(key);
+		MapNode<V>* head = buckets[bucketIndex];
+		MapNode<V>* previous = NULL;
+
+		while(head != NULL){
+			if(head -> key == key){
+				if(previous == NULL){
+					buckets[bucketIndex] = head -> next;
+				}else{
+					previous -> next = head -> next;
+				}
+				V value = head -> value;
+				head -> next = NULL;
+				delete head;
+				count--;
+				return value;
+			}
+			previous = head;
+			head = head -> next;
+		}
+		return 0;
+	}
 };
 
 
