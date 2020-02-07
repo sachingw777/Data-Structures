@@ -1,3 +1,6 @@
+#include <string>
+using namespace std;
+
 template <typename V>
 class MapNode{
 public:
@@ -37,5 +40,48 @@ public:
 		}
 		delete [] buckets;
 	}
+
+	int size(){
+		return count;
+	}
+
+private:
+	int getBucketIndex(string key){
+		int hashCode = 0;
+		int coeff = 1;
+		for(int i = key.length() - 1; i >= 0; i--){
+			hashCode += key[i] * coeff;
+			hashCode = hashCode % numBuckets;
+			coeff *= 37;
+			coeff = coeff % 37;
+		}
+		return hashCode % numBuckets; 
+	}
+
+public:
+	void insert(string key, V value){
+		int bucketIndex = getBucketIndex(key, value);
+		MapNode<V>* head = buckets[bucketIndex];
+		while(head != NULL){
+			if(head -> key == key){
+				head -> value = value;
+				return;
+			}
+			head = head -> next;
+		}
+		head = buckets[bucketIndex];
+		MapNode<V>* node = new MapNode<V>(key, value);
+		node -> next = head;
+		buckets[bucketIndex] = node;
+		count++;
+
+	}
+
 	
 };
+
+
+
+
+
+
