@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
-#include "MaxPriorityQueue.h"
+// #include "MaxPriorityQueue.h"
+#include "MinPriorityQueue.h"
 
 int main() {
 	PriorityQueue p;
@@ -14,10 +15,12 @@ int main() {
 	p.insert(67);
 
 	cout << p.getSize() << endl;
-	cout << p.getMax() << endl;
+	// cout << p.getMax() << endl;
+	cout << p.getMin() << endl;
 
 	while(!p.isEmpty()) {
-		cout << p.removeMax() << " " ;
+		// cout << p.removeMax() << " " ;
+		cout << p.removeMin() << " " ;
 
 	}
 	cout << endl;
