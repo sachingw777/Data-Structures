@@ -36,7 +36,7 @@ public:
 private:
     bool search(TrieNode *root, string word) {
 		if(word.size() == 0){
-			return root -> isTerminal;
+			return root -> isTerminal; //return true; // for suffix trie.
 		}
 
 		int index = word[0] - 'a';
