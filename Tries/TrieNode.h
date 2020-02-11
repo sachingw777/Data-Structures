@@ -12,7 +12,7 @@ public:
 			children[i] = NULL;
 		}
 		
-		isTerminal = false
+		isTerminal = false;
 
 	}
 };
