@@ -2,6 +2,11 @@
 #include <queue>
 using namespace std;
 
+/*
+	printDFS() & printBFS() - prints out connected graphs.
+	DFS() & BFS() - for disconnected graphs.Checks out visited array if all the vertices are visited, if not then call printBFS()/printDFS() for that particular vertex.
+*/
+
 //sv - starting vertex
 void printDFS(int** edges, int n, int sv, bool* visited){	
 	cout << sv << endl;
@@ -91,14 +96,15 @@ int main(){
 		edges[s][f] = 1;
 	}
 
-	bool* visited = new bool[n];
+/*
+	bool* visited = new bool[n];		//visited array is specific to each DFS or BFS. So we'll create it there.
 	for(int i = 0; i < n; i++){
 		visited[i] = false;
 	}
-
+*/
 	cout << "DFS:" << endl;
-	// printDFS(edges, n, 0, visited);
-	DFS(edges, n);
+	// printDFS(edges, n, 0, visited);	//not gonna pass visited and startingVertex for disconnected graphs.
+	DFS(edges, n);	//passing only graph & no. of vertices.
 
  	cout << "BFS:" << endl;
  	// printBFS(edges, n, 0);
@@ -108,5 +114,5 @@ int main(){
 		delete [] edges[i];
 	}
 	delete [] edges;
-	delete [] visited;
+	// delete [] visited;
 }
