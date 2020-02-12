@@ -75,6 +75,16 @@ void BFS(int** edges, int n){
 	delete [] visited;
 }
 
+/*
+TODO
+	hasPath()
+	getPathDFS()
+	getPathBFS()
+	isConnected()
+	allConnectedComponents()
+
+*/
+
 int main(){
 	int n;
 	int e;
