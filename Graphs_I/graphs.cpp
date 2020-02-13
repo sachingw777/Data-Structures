@@ -107,24 +107,6 @@ int main(){
 		edges[s][f] = 1;
 	}
 
-	//Adjacency List Method
-	unordered_map<int, vector<int>*> adjacenyList;
-	for(int i = 0; i < n; i++){
-		vector<int>* v = new vector<int>;
-		adjacenyList[i] = v;
-	}
-
-	int count = 1;
-	while(count <= e){
-		int f, s;
-		cin >> f >> s;
-		adjacenyList[f] -> push_back(s);
-		adjacenyList[s] -> push_back(f);
-		count++;
-	}
-
-	int v1, v2; //for hasPath()
-	cin >> v1 >> v2;
 /*
 	bool* visited = new bool[n];		//visited array is specific to each DFS or BFS. So we'll create it there.
 	for(int i = 0; i < n; i++){
