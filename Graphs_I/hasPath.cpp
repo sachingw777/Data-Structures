@@ -58,4 +58,9 @@ int main(){
     }else{
         cout << "false" << endl;
     }
+
+    for(int i = 0; i < n; i++){
+        vector<int>* v = adjacenyList[i];
+        delete [] v;
+    }
 }
