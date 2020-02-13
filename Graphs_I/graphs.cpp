@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <unordered_map>
 using namespace std;
 
 /*
@@ -77,7 +78,7 @@ void BFS(int** edges, int n){
 
 /*
 TODO
-	hasPath()
+	hasPath()	- cleanup
 	getPathDFS()
 	getPathBFS()
 	isConnected()
@@ -91,7 +92,7 @@ int main(){
 	cin >> n >> e;
 	//n nodes, e edges
 
-	int** edges = new int*[n];
+	int** edges = new int*[n];	//Adjacency Matrix.
 	for(int i = 0; i < n; i++){
 		edges[i] = new int[n];
 		for (int j = 0; j < n; j++){
@@ -99,13 +100,31 @@ int main(){
 		}
 	}
 
-	for(int i = 0; i < e; i++){
+	for(int i = 0; i < e; i++){	//fill Adjacency Matrix
 		int f, s;		//take input edges
 		cin >> f >> s;
 		edges[f][s] = 1;	//mark edges 1
 		edges[s][f] = 1;
 	}
 
+	//Adjacency List Method
+	unordered_map<int, vector<int>*> adjacenyList;
+	for(int i = 0; i < n; i++){
+		vector<int>* v = new vector<int>;
+		adjacenyList[i] = v;
+	}
+
+	int count = 1;
+	while(count <= e){
+		int f, s;
+		cin >> f >> s;
+		adjacenyList[f] -> push_back(s);
+		adjacenyList[s] -> push_back(f);
+		count++;
+	}
+
+	int v1, v2; //for hasPath()
+	cin >> v1 >> v2;
 /*
 	bool* visited = new bool[n];		//visited array is specific to each DFS or BFS. So we'll create it there.
 	for(int i = 0; i < n; i++){
