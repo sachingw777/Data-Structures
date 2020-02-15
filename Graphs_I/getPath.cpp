@@ -65,7 +65,7 @@ int main(){
             cout << ans->at(i) << " ";      
         }   
     }    
-    delete [] ans;
+    delete ans;
     
     for(int i = 0; i < n; i++){
         delete [] edges[i];
