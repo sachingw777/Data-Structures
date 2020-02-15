@@ -76,15 +76,32 @@ void BFS(int** edges, int n){
 	delete [] visited;
 }
 
-/*
-TODO
-	hasPath()	- cleanup
-	getPathDFS()
-	getPathBFS()
-	isConnected()
-	allConnectedComponents()
+void checkConnected(int** edges, int n, int sv, bool* visited){
+	visited[sv] = true;
 
-*/
+	for(int i = 0; i < n; i++){
+		if(edges[sv][i] == 1 && !visited[i]){
+			visited[i] = true;
+			checkConnected(edges, n, i, visited);
+		}
+	}
+}
+
+bool isConnected(int** edges, int n, int sv){
+	bool* visited = new bool[n];
+	for(int i = 0; i < n; i++){
+		visited[i] = false;
+	}
+
+	checkConnected(edges, n, sv, visited);
+
+	for(int i = 0; i < n; i++){
+		if(visited[i] == false){
+			return false;
+		}
+	}
+	return true;
+}
 
 int main(){
 	int n;
@@ -120,6 +137,16 @@ int main(){
  	cout << "BFS:" << endl;
  	// printBFS(edges, n, 0);
  	BFS(edges, n);
+
+/*
+ 	bool ans = isConnected(edges, n, 0);
+ 	cout << "isConnected :- "
+ 	if(ans){
+ 		cout << "true";
+ 	}else{
+ 		cout << "false";
+ 	}
+*/
 
 	for(int i = 0; i < n; i++){
 		delete [] edges[i];
