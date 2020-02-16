@@ -32,7 +32,7 @@ Edge* kruskals(Edge* input, int n, int e){
 
 	int count = 0;	//count for no. of edges in output array.
 	int i = 0;	//
-	while(count < n){
+	while(count < n - 1){
 		Edge current = input[i];
 
 		int parent_one = findParent(current.source, parents);
