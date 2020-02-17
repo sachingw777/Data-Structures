@@ -5,16 +5,16 @@ using namespace std;
 int countStepsTo1_DP(int n){
 	int* ans = new int[n + 1];
 	for(int i = 0; i <= n; i++) {
-		ans[i] = -1;
+		ans[i] = 0;
 	}
 
-	ans[0] = 0;
 	ans[1] = 0;
 	ans[2] = 1;
 	ans[3] = 1;
 
-	int x1, x2, x3;
 	for(int i = 4; i <= n; i++){
+		int x1 = INT_MAX, x2 = INT_MAX, x3 = INT_MAX;
+
 		x1 = ans[i - 1];
 
 		if(i % 2 == 0){
@@ -93,4 +93,5 @@ int main(){
 	cin  >> n;
 	// cout << countStepsTo1(n) << endl;
 	cout << countStepsTo1_optimized(n) << endl;
+	cout << countStepsTo1_DP(n) << endl;
 }
