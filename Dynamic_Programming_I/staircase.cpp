@@ -15,6 +15,7 @@ long staircase_DP(int n){
 	return output;
 }
 
+//need to fix this.
 long staircase_optimized(int n, int* ans){
 	if(n < 0){
 		return 0;
@@ -65,6 +66,6 @@ int main(){
 	int n; 
 	cin >> n ;
 	// cout << staircase(n) << endl;
-	cout << staircase_optimized(n) << endl;
+	// cout << staircase_optimized(n) << endl;
 	cout << staircase_DP(n) << endl;
 }
