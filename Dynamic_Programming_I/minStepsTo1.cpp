@@ -2,6 +2,36 @@
 #include <climits>
 using namespace std;
 
+int countStepsTo1_DP(int n){
+	int* ans = new int[n + 1];
+	for(int i = 0; i <= n; i++) {
+		ans[i] = -1;
+	}
+
+	ans[0] = 0;
+	ans[1] = 0;
+	ans[2] = 1;
+	ans[3] = 1;
+
+	int x1, x2, x3;
+	for(int i = 4; i <= n; i++){
+		x1 = ans[i - 1];
+
+		if(i % 2 == 0){
+			x2 = ans[i / 2];
+		}
+
+		if(i % 3 == 0){
+			x3 = ans[i / 3];
+		}
+
+		ans[i] = 1 + min(x1, min(x2,x3));
+	}
+	int output = ans[n];
+	delete [] ans;
+	return output;
+}
+
 int countStepsTo1_optimized(int n, int* ans){
 	if(n == 1){
 		ans[n] = 0;
@@ -35,7 +65,9 @@ int countStepsTo1_optimized(int n){
 	for(int i = 0; i <= n; i++) {
 		ans[i] = -1;
 	}
-	return countStepsTo1_optimized(n, ans);
+	int output = countStepsTo1_optimized(n, ans);
+	delete [] ans;
+	return output;
 }
 
 int countStepsTo1(int n){
