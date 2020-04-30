@@ -101,6 +101,38 @@ bool isConnected(int** edges, int n, int sv){
 		}
 	}
 	return true;
+	delete [] visited;
+}
+
+void allConnectedComponents(int** edges, int n, int sv, bool* visited, vector<int>* blank){
+	visited[sv] = true;
+	blank->push_back(sv);
+
+	for(int i = 0; i < n; i++){
+		if(edges[sv][i] == 1 && !visited[i]){
+			blank->push_back(i);
+			allConnectedComponents(edges, n, i, visited, blank);
+		}
+	}
+}
+
+vector<int>** allConnectedComponents(int** edges, int n, int sv){
+	bool* visited = new bool[n];
+	for(int i = 0; i < n; i++){
+		visited[i] = false;
+	}
+
+	vector<int>* blank = new vector<int>;
+	allConnectedComponents(edges, n, sv, visited, blank);
+	vector<vector<int>*> *output = new vector<vector<int>*>;
+	output->push_back(smallAns);
+
+	for(int i = 0; i < n; i++){
+		if(visited[i] == false){
+			allConnectedComponents(edges, n, i, visited, blank);
+		}
+	}
+	delete [] visited;
 }
 
 int main(){
